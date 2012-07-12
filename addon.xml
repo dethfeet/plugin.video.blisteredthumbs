@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon
+	id="plugin.video.blisteredthumbs"
+	version="0.0.1"
+	name="Blistered Thumbs"
+	provider-name="dethfeet">
+<requires>
+	<import addon="xbmc.python" version="2.0"/>
+    <import addon="plugin.video.bliptv" version="0.4.0"/>
+    <import addon="plugin.video.youtube" version="0.4.0"/>
+</requires>
+<extension point="xbmc.python.pluginsource"
+		library="default.py">
+	<provides>video</provides>
+</extension>
+<extension point="xbmc.addon.metadata">
+	<language>en</language>
+	<platform>all</platform>
+	<summary>Watch videos from Blistered Thumbs</summary>
+	<description>Blistered Thumbs</description>
+</extension>
+</addon>

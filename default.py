@@ -13,15 +13,10 @@ def mainPage():
     addDirectoryItem(addon.getLocalizedString(30002),{'action':"listPlatforms"})
 
 def listShows():
-    addDirectoryItem('Substance TV',{'action':"listVideos",'link' : baseLink+"/show/show-substance-tv"},baseLink+"/show_images/thumbnails/1305265880-115x50.jpg")
-    addDirectoryItem('Bennett The Sage',{'action':"listVideos",'link' : baseLink+"/show/show-bennett-the-sage"},baseLink+"/show_images/thumbnails/1287774048-115x50.jpg")
-    addDirectoryItem('RinryGameGame',{'action':"listVideos",'link' : baseLink+"/show/show-rinrygamegame"},baseLink+"/show_images/thumbnails/1291931887-115x50.png")
-    addDirectoryItem('MMO Grinder',{'action':"listVideos",'link' : baseLink+"/show/show-mmo-grinder"},baseLink+"/show_images/thumbnails/1321479436-115x50.jpg")
-    addDirectoryItem('GameJams',{'action':"listVideos",'link' : baseLink+"/show/show-gamejams"},baseLink+"/show_images/thumbnails/1299312822-115x50.jpg")
-    addDirectoryItem('Heart of Gaming',{'action':"listVideos",'link' : baseLink+"/show/show-heart-of-gaming"},baseLink+"/show_images/thumbnails/1299023028-115x50.jpg")
-    addDirectoryItem('Ashens',{'action':"listVideos",'link' : baseLink+"/show/show-ashens"},baseLink+"/show_images/thumbnails/1303370810-115x50.png")
-    addDirectoryItem('Benzaie',{'action':"listVideos",'link' : baseLink+"/show/show-benzaie"},baseLink+"/show_images/thumbnails/1287800440-115x50.jpg")
-    addDirectoryItem('Lee/Dena Still Gaming',{'action':"listVideos",'link' : baseLink+"/show/show-leedena-still-gaming"},baseLink+"/show_images/thumbnails/1296447617-115x50.jpg")
+    page = loadPage("http://www.blisteredthumbs.net/shows-archive/")
+    regex_extractShows = re.compile("<div class=\"show rounded_large\">.*?<img src=\"(.*?)\".*?<a href=\"(.*?)\">(.*?)</a>",re.DOTALL)
+    for show in regex_extractShows.findall(page):
+        addDirectoryItem(show[2],{'action':"listVideos",'link' : show[1]},show[0])
 
 def listPlatforms():
 	addDirectoryItem('MMO',{'action':"listVideos",'link' : baseLink+"/category/mmo"},baseLink+"/wp-content/themes/BT2/images/mmo_nav.png")
